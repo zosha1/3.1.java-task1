@@ -14,6 +14,9 @@ public class Radio {
     }
 
     public void setCurrentStation(int currentStation) {
+        if (currentStation > maxStation || currentStation < minStation) {
+            return;
+        }
         this.currentStation = currentStation;
     }
 
@@ -22,6 +25,9 @@ public class Radio {
     }
 
     public void setCurrentVolume(int currentVolume) {
+        if (currentVolume > maxVolume || currentVolume < minVolume) {
+            return;
+        }
         this.currentVolume = currentVolume;
     }
 
@@ -44,16 +50,12 @@ public class Radio {
     public void increaseVolume() {
         if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
-        } else {
-            return;
         }
     }
 
     public void reduceVolume() {
         if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
-        } else {
-            return;
         }
     }
 }
