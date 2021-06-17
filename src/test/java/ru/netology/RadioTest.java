@@ -8,10 +8,17 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RadioTest {
     @Test
     public void afterMaxStationTest() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(9);
-
+        Radio radio = new Radio(20);
+        radio.setCurrentStation(19);
         radio.nextStation();
+
+        assertEquals(0, radio.getCurrentStation());
+    }
+
+    @Test
+    public void moreMaxStationTest() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(17);
 
         assertEquals(0, radio.getCurrentStation());
     }
@@ -20,7 +27,6 @@ public class RadioTest {
     public void nextStationTest() {
         Radio radio = new Radio();
         radio.setCurrentStation(7);
-
         radio.nextStation();
 
         assertEquals(8, radio.getCurrentStation());
@@ -30,17 +36,24 @@ public class RadioTest {
     public void beforeMinStationTest() {
         Radio radio = new Radio();
         radio.setCurrentStation(0);
-
         radio.prevStation();
 
         assertEquals(9, radio.getCurrentStation());
     }
 
     @Test
+    public void lessMinStationTest() {
+        Radio radio = new Radio();
+
+        radio.setCurrentStation(-5);
+
+        assertEquals(0, radio.getCurrentStation());
+    }
+
+    @Test
     public void prevStationTest() {
         Radio radio = new Radio();
         radio.setCurrentStation(7);
-
         radio.prevStation();
 
         assertEquals(6, radio.getCurrentStation());
@@ -49,11 +62,11 @@ public class RadioTest {
     @Test
     public void moreMaxVolumeTest() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
 
         radio.increaseVolume();
 
-        assertEquals(10, radio.getCurrentVolume());
+        assertEquals(100, radio.getCurrentVolume());
     }
 
     @Test
@@ -84,5 +97,21 @@ public class RadioTest {
         radio.reduceVolume();
 
         assertEquals(4, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void moreMaxVolumeTest2() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(150);
+
+        assertEquals(0, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void lessMinVolumeTest2() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(-15);
+
+        assertEquals(0, radio.getCurrentVolume());
     }
 }
