@@ -1,5 +1,10 @@
 package ru.netology;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
 public class Radio {
     String name;
     private int countStation = 10;
@@ -14,22 +19,11 @@ public class Radio {
         this.countStation = countStation;
     }
 
-    public Radio() {
-    }
-
-    public int getCurrentStation() {
-        return currentStation;
-    }
-
     public void setCurrentStation(int currentStation) {
         if (currentStation > countStation - 1 || currentStation < minStation) {
             return;
         }
         this.currentStation = currentStation;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
     }
 
     public void setCurrentVolume(int currentVolume) {
@@ -40,7 +34,7 @@ public class Radio {
     }
 
     public void nextStation() {
-        if (currentStation < countStation -1) {
+        if (currentStation < countStation - 1) {
             currentStation = currentStation + 1;
         } else {
             currentStation = minStation;
