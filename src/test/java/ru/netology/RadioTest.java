@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RadioTest {
     @Test
     public void afterMaxStationTest() {
-        Radio radio = new Radio(10);
-
+        Radio radio = new Radio(20);
+        radio.setCurrentStation(19);
         radio.nextStation();
 
         assertEquals(0, radio.getCurrentStation());
@@ -34,11 +34,11 @@ public class RadioTest {
 
     @Test
     public void beforeMinStationTest() {
-        Radio radio = new Radio(0);
-
+        Radio radio = new Radio();
+        radio.setCurrentStation(0);
         radio.prevStation();
 
-        assertEquals(10, radio.getCurrentStation());
+        assertEquals(9, radio.getCurrentStation());
     }
 
     @Test
@@ -52,8 +52,8 @@ public class RadioTest {
 
     @Test
     public void prevStationTest() {
-        Radio radio = new Radio(7);
-
+        Radio radio = new Radio();
+        radio.setCurrentStation(7);
         radio.prevStation();
 
         assertEquals(6, radio.getCurrentStation());
